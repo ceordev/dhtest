@@ -1,59 +1,61 @@
-# DhTest
+DhTest
+Este proyecto es una aplicación web desarrollada con Angular y Angular Material que consume una API externa para mostrar una lista de usuarios con funcionalidades de tabla avanzadas.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+Características
+Listado de Usuarios: Muestra una tabla con datos de usuarios obtenidos de https://jsonplaceholder.typicode.com/users.
 
-## Development server
+Paginación: Permite navegar a través de los datos de la tabla en páginas.
 
-To start a local development server, run:
+Ordenamiento (Sorting): Posibilidad de ordenar las columnas de la tabla.
 
-```bash
+Filtrado: Un campo de entrada para filtrar los usuarios por cualquier columna visible.
+
+Detalles del Usuario (Modal): Un botón de "ojo" en cada fila que abre un modal con todos los detalles de un usuario específico.
+
+Tooltips: El botón de "ojo" incluye un tooltip para mejorar la usabilidad.
+
+Tecnologías Utilizadas
+Angular: Framework para construir la interfaz de usuario.
+
+Angular Material: Librería de componentes UI que implementa Material Design.
+
+HttpClient: Módulo de Angular para realizar peticiones HTTP a APIs externas.
+
+TypeScript: Lenguaje de programación utilizado.
+
+Cómo Ejecutar el Proyecto
+Para poner en marcha este proyecto en tu entorno local, sigue los siguientes pasos:
+
+Clonar el repositorio:
+
+git clone https://github.com/ceordev/dhtest
+cd DhTest
+
+Instalar dependencias:
+Una vez dentro del directorio del proyecto, instala todas las dependencias necesarias:
+
+npm install
+
+Iniciar el servidor de desarrollo:
+Después de que el proceso de instalación finalice, puedes iniciar la aplicación:
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Esto compilará la aplicación y la servirá en http://localhost:4200/. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
-## Code scaffolding
+Estructura del Proyecto (Componentes Clave)
+app.component.ts: Componente principal que gestiona la tabla de usuarios, la lógica de filtrado, paginación y la apertura del modal de detalles.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+services/user.service.ts: Un servicio que encapsula la lógica para obtener los datos de los usuarios desde la API.
 
-```bash
-ng generate component component-name
-```
+interfaces/user-data.interface.ts: Define la estructura de datos para un objeto de usuario.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+user-details-dialog/user-details-dialog.component.ts: Componente standalone que actúa como el modal para mostrar los detalles completos de un usuario.
 
-```bash
-ng generate --help
-```
+app.config.ts: Archivo de configuración para aplicaciones standalone de Angular, donde se provee HttpClient globalmente.
 
-## Building
+<img width="1430" height="549" alt="image" src="https://github.com/user-attachments/assets/6771d2d3-9d75-42c0-95b9-ff4f79c2417a" />
 
-To build the project run:
+<img width="889" height="644" alt="image" src="https://github.com/user-attachments/assets/faa0a694-4dea-4500-a79c-72bf42e2f4a6" />
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
