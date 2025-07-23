@@ -1,16 +1,18 @@
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core'; 
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
-import { MatToolbarModule } from '@angular/material/toolbar'; 
-import { UserService } from './services/user.service'; 
-import { UserData } from './interfaces/user-data.interface'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { UserService } from './services/user.service';
+import { UserData } from './interfaces/user-data.interface';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog'; // Import MatDialog and MatDialogModule
+import { DetailsModal } from './components/details-modal/details-modal';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +26,8 @@ import { UserData } from './interfaces/user-data.interface';
     MatIconButton,
     MatIcon,
     MatTooltip,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule // Add MatDialogModule to imports
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -38,7 +41,8 @@ export class App implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private userService: UserService) {}
+  // Inject MatDialog in the constructor
+  constructor(private userService: UserService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.userService.getUsers().subscribe({
@@ -68,6 +72,9 @@ export class App implements AfterViewInit, OnInit {
   }
 
   viewDetails(row: UserData) {
-    alert(`Ver detalles del usuario: ${row.name} (ID: ${row.id})`);
+    this.dialog.open(DetailsModal, {
+      width: '400px', 
+      data: row
+    });
   }
 }

@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Detalles del Usuario: {{ data.name }}</h2>
+<mat-dialog-content class="mat-typography">
+  <p><strong>ID:</strong> {{ data.id }}</p>
+  <p><strong>Nombre de usuario:</strong> {{ data.username }}</p>
+  <p><strong>Email:</strong> {{ data.email }}</p>
+  <p><strong>Sitio Web:</strong> {{ data.website }}</p>
+  <p><strong>Teléfono:</strong> {{ data.phone }}</p>
+
+  <h3>Dirección:</h3>
+  <p><strong>Calle:</strong> {{ data.address.street }}</p>
+  <p><strong>Suite:</strong> {{ data.address.suite }}</p>
+  <p><strong>Ciudad:</strong> {{ data.address.city }}</p>
+  <p><strong>Código Postal:</strong> {{ data.address.zipcode }}</p>
+  <p><strong>Geo (Lat, Lng):</strong> {{ data.address.geo.lat }}, {{ data.address.geo.lng }}</p>
+
+  <h3>Compañía:</h3>
+  <p><strong>Nombre:</strong> {{ data.company.name }}</p>
+  <p><strong>Lema:</strong> {{ data.company.catchPhrase }}</p>
+  <p><strong>BS:</strong> {{ data.company.bs }}</p>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="onClose()">Cerrar</button>
+</mat-dialog-actions>
